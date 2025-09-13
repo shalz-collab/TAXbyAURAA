@@ -1,73 +1,36 @@
-# Welcome to your Lovable project
+##TaxBy Aura – Income Tax Calculator
+Project Info
+##Project URL:
+https://github.com/shalz-collab/taxby-aura
 
-## Project info
+##Description:
+TaxBy Aura is a web-based Income Tax Calculator designed to help users calculate their taxes quickly and accurately. Users can enter their income, exemptions, and investments, and the system automatically computes tax liability and generates a clear summary.
 
-**URL**: https://lovable.dev/projects/933e2973-dba4-4f28-b746-8ca734a8a1da
+##Features
+1.Enter income from multiple sources
 
-## How can I edit this code?
+2.Apply standard deductions and investment exemptions (80C, 80D, etc.)
 
-There are several ways of editing your application.
+3.Automatic tax calculation and summary generation
 
-**Use Lovable**
+4.Responsive and user-friendly interface
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/933e2973-dba4-4f28-b746-8ca734a8a1da) and start prompting.
+5.Professional dark mode with smooth background animations
 
-Changes made via Lovable will be committed automatically to this repo.
+#Models
+Aravindan VG Model
 
-**Use your preferred IDE**
+Manages income slab entries, standard deductions, and auto tax calculation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Parjapath Jogender Model
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Provides tax payment portal simulation and detailed summary
 
-Follow these steps:
+#Technologies Used
+Frontend: React, TypeScript
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+UI Framework: Tailwind CSS, shadcn-ui
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Build Tool: Vite
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/933e2973-dba4-4f28-b746-8ca734a8a1da) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+#Deployment: GitHub Pages / Netlify / Vercel
