@@ -1,0 +1,696 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ferrari Racing Theme Design System */
+
+@layer base {
+  :root {
+    /* Ferrari Racing Color Palette */
+    --ferrari-red: 0 82% 43%;
+    --racing-silver: 210 8% 75%;
+    --carbon-black: 0 0% 8%;
+    --pure-white: 0 0% 100%;
+    --gold-accent: 45 100% 60%;
+    
+    /* Background System */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+    
+    /* Card System */
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 95%;
+    
+    /* Interactive Elements */
+    --primary: 0 82% 43%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+    
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+    
+    --accent: 45 100% 60%;
+    --accent-foreground: 0 0% 8%;
+    
+    /* System Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 20%;
+    --input: 0 0% 12%;
+    --ring: 0 82% 43%;
+    
+    /* Layout */
+    --radius: 0.75rem;
+    
+    /* Ferrari Gradients */
+    --gradient-ferrari: linear-gradient(135deg, hsl(0 82% 43%) 0%, hsl(0 95% 35%) 25%, hsl(0 100% 25%) 50%, hsl(0 0% 8%) 100%);
+    --gradient-energy: radial-gradient(ellipse at center, hsl(0 82% 43% / 0.3) 0%, transparent 70%);
+    --gradient-racing: linear-gradient(90deg, hsl(0 82% 43%) 0%, hsl(45 100% 60%) 50%, hsl(210 8% 75%) 100%);
+    
+    /* Shadows & Effects */
+    --shadow-ferrari: 0 10px 40px hsl(0 82% 43% / 0.3);
+    --shadow-glow: 0 0 30px hsl(0 82% 43% / 0.5);
+    --shadow-racing: 0 20px 60px hsl(0 0% 0% / 0.8);
+    
+    /* Animations */
+    --transition-racing: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: all 0.3s ease-out;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-rajdhani;
+    background: var(--gradient-ferrari);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  /* Ferrari Racing Animations */
+  .ferrari-glow {
+    @apply shadow-[var(--shadow-glow)] transition-[var(--transition-racing)];
+  }
+  
+  .racing-hover {
+    @apply hover:scale-105 hover:shadow-[var(--shadow-ferrari)] transition-[var(--transition-racing)];
+  }
+  
+  .energy-pulse {
+    @apply animate-pulse;
+    background: var(--gradient-energy);
+  }
+  
+  .racing-gradient {
+    background: var(--gradient-racing);
+  }
+  
+  .ferrari-card {
+    @apply bg-card/80 backdrop-blur-lg border border-white/10 rounded-xl ferrari-glow;
+  }
+  
+  /* Dynamic Background Effects */
+  .ferrari-bg {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ferrari-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-energy);
+    opacity: 0.6;
+    animation: energyFlow 3s ease-in-out infinite alternate;
+  }
+  
+  @keyframes energyFlow {
+    0% { transform: translateX(-100%) rotate(-5deg); }
+    100% { transform: translateX(100%) rotate(5deg); }
+  }
+  
+  @keyframes racingPulse {
+    0%, 100% { box-shadow: 0 0 20px hsl(0 82% 43% / 0.5); }
+    50% { box-shadow: 0 0 40px hsl(0 82% 43% / 0.8), 0 0 60px hsl(45 100% 60% / 0.3); }
+  }
+  
+  .racing-pulse {
+    animation: racingPulse 2s ease-in-out infinite;
+  }
+  
+  .racing-car-moving {
+    animation: car-slide 4s ease-in-out infinite, car-float 2s ease-in-out infinite;
+  }
+  
+  .racing-car-speed {
+    animation: racing-speed 3s ease-in-out infinite, car-vibrate 0.5s ease-in-out infinite;
+  }
+  
+  .racing-car-header {
+    animation: header-race 2s ease-in-out infinite, car-glow 3s ease-in-out infinite;
+  }
+  
+  @keyframes car-slide {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
+  }
+  
+  @keyframes car-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  @keyframes racing-speed {
+    0%, 100% { transform: translateX(0) scaleX(1); }
+    25% { transform: translateX(30px) scaleX(1.1); }
+    50% { transform: translateX(-15px) scaleX(0.95); }
+    75% { transform: translateX(40px) scaleX(1.05); }
+  }
+  
+  @keyframes car-vibrate {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-2px); }
+    50% { transform: translateY(1px); }
+    75% { transform: translateY(-1px); }
+  }
+  
+  @keyframes header-race {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    50% { transform: translateX(15px) rotate(2deg); }
+  }
+  
+  @keyframes car-glow {
+    0%, 100% { filter: drop-shadow(0 0 10px hsl(0 82% 43% / 0.5)); }
+    50% { filter: drop-shadow(0 0 20px hsl(0 82% 43% / 0.8)) drop-shadow(0 0 30px hsl(45 100% 60% / 0.3)); }
+  }
+  
+  /* F1 Car Animations */
+  .animated-f1-container {
+    @apply relative flex justify-center items-center;
+    perspective: 1000px;
+  }
+
+  .f1-car {
+    @apply relative;
+    width: 250px;
+    height: 60px;
+    animation: f1-racing 2.5s ease-in-out infinite;
+  }
+  /* Car Body */
+  .car-body {
+    @apply relative w-full h-full;
+  }
+
+  .car-hood {
+    @apply absolute;
+    width: 50px;
+    height: 25px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(0 90% 40%));
+    border-radius: 15px 5px 5px 15px;
+    top: 18px;
+    left: 90px;
+    box-shadow: 0 3px 12px hsl(var(--primary) / 0.4);
+  }
+
+  .car-windshield {
+    @apply absolute;
+    width: 35px;
+    height: 20px;
+    background: linear-gradient(135deg, hsl(200 100% 85%), hsl(200 100% 70%));
+    border-radius: 8px 8px 3px 3px;
+    top: 15px;
+    left: 75px;
+    border: 1px solid hsl(var(--border));
+  }
+
+  .car-roof {
+    @apply absolute;
+    width: 45px;
+    height: 22px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(0 85% 35%));
+    border-radius: 10px;
+    top: 16px;
+    left: 70px;
+    box-shadow: 0 2px 8px hsl(var(--primary) / 0.3);
+  }
+
+  .car-trunk {
+    @apply absolute;
+    width: 40px;
+    height: 28px;
+    background: linear-gradient(135deg, hsl(0 90% 35%), hsl(0 95% 25%));
+    border-radius: 8px 12px 12px 8px;
+    top: 16px;
+    left: 20px;
+  }
+
+  .f1-rear-wing {
+    @apply absolute;
+    width: 15px;
+    height: 40px;
+    background: linear-gradient(180deg, hsl(0 0% 20%), hsl(0 0% 40%));
+    border-radius: 5px;
+    top: 10px;
+    left: 5px;
+    transform: skewX(-10deg);
+  }
+
+  .f1-front-wing {
+    @apply absolute;
+    width: 20px;
+    height: 8px;
+    background: linear-gradient(90deg, hsl(0 0% 20%), hsl(0 0% 40%));
+    border-radius: 10px;
+    top: 35px;
+    right: 5px;
+  }
+
+  /* F1 Wheels */
+  .f1-wheels {
+    @apply absolute w-full h-full;
+  }
+
+  .f1-wheel {
+    @apply absolute;
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle, hsl(0 0% 13%), hsl(0 0% 0%));
+    border-radius: 50%;
+    border: 2px solid hsl(0 0% 27%);
+    animation: f1-wheel-spin 0.3s linear infinite;
+  }
+
+  .f1-wheel-front {
+    bottom: 10px;
+    right: 35px;
+  }
+
+  .f1-wheel-rear {
+    bottom: 10px;
+    left: 40px;
+  }
+
+  .f1-wheel-rim {
+    @apply absolute;
+    width: 15px;
+    height: 15px;
+    background: linear-gradient(45deg, hsl(0 0% 75%), hsl(0 0% 50%));
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* F1 Details */
+  .f1-details {
+    @apply absolute w-full h-full;
+  }
+
+  .f1-number {
+    @apply absolute flex items-center justify-center font-bold text-xs;
+    width: 20px;
+    height: 20px;
+    background: hsl(0 0% 100%);
+    border-radius: 50%;
+    top: 20px;
+    left: 90px;
+    color: hsl(var(--primary));
+    border: 2px solid hsl(var(--primary));
+  }
+
+  .f1-spoiler {
+    @apply absolute;
+    width: 30px;
+    height: 12px;
+    background: linear-gradient(180deg, hsl(0 0% 27%), hsl(0 0% 13%));
+    border-radius: 5px;
+    top: 5px;
+    left: 15px;
+    transform: skewX(-15deg);
+  }
+
+  .f1-exhaust {
+    @apply absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, hsl(45 100% 50%), hsl(15 100% 50%));
+    border-radius: 50%;
+    top: 26px;
+    left: 2px;
+    animation: f1-exhaust-fire 0.8s ease-in-out infinite;
+  }
+
+  /* F1 Speed Effects */
+  .f1-speed-lines {
+    @apply absolute;
+    width: 400px;
+    height: 100%;
+    right: 250px;
+    top: 0;
+  }
+
+  .f1-speed-line {
+    @apply absolute;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(210 100% 60%), transparent);
+    animation: f1-speed-effect 1s ease-in-out infinite;
+  }
+
+  .f1-line-1 {
+    width: 80px;
+    top: 20px;
+    animation-delay: 0s;
+  }
+
+  .f1-line-2 {
+    width: 100px;
+    top: 30px;
+    animation-delay: 0.2s;
+  }
+
+  .f1-line-3 {
+    width: 90px;
+    top: 40px;
+    animation-delay: 0.4s;
+  }
+
+  .f1-line-4 {
+    width: 70px;
+    top: 50px;
+    animation-delay: 0.6s;
+  }
+
+  /* F1 Animations */
+  @keyframes f1-racing {
+    0%, 100% {
+      transform: translateX(0) translateY(0) rotateZ(0deg);
+    }
+    25% {
+      transform: translateX(8px) translateY(-2px) rotateZ(1deg);
+    }
+    50% {
+      transform: translateX(-4px) translateY(1px) rotateZ(-0.5deg);
+    }
+    75% {
+      transform: translateX(12px) translateY(-1px) rotateZ(1.5deg);
+    }
+  }
+
+  @keyframes f1-wheel-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes f1-exhaust-fire {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 0 8px hsl(15 100% 50%);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.2);
+      box-shadow: 0 0 12px hsl(45 100% 50%);
+    }
+  }
+
+  @keyframes f1-speed-effect {
+    0% {
+      transform: translateX(0);
+      opacity: 0;
+
+  /* Animated Sports Car Styles */
+  .animated-sports-car-container {
+    @apply relative w-full h-24 md:h-32 flex items-center justify-center;
+    animation: car-drive 3s ease-in-out infinite;
+  }
+
+  .sports-car {
+    @apply relative;
+    width: 160px;
+    height: 60px;
+    transform-origin: center;
+  }
+
+  /* Car Body */
+  .car-body {
+    @apply relative w-full h-full;
+  }
+
+  .car-hood {
+    @apply absolute;
+    width: 50px;
+    height: 25px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(0 90% 40%));
+    border-radius: 15px 5px 5px 15px;
+    top: 18px;
+    left: 90px;
+    box-shadow: 0 3px 12px hsl(var(--primary) / 0.4);
+  }
+
+  .car-windshield {
+    @apply absolute;
+    width: 35px;
+    height: 20px;
+    background: linear-gradient(135deg, hsl(200 100% 85%), hsl(200 100% 70%));
+    border-radius: 8px 8px 3px 3px;
+    top: 15px;
+    left: 75px;
+    border: 1px solid hsl(var(--border));
+  }
+
+  .car-roof {
+    @apply absolute;
+    width: 45px;
+    height: 22px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(0 85% 35%));
+    border-radius: 10px;
+    top: 16px;
+    left: 70px;
+    box-shadow: 0 2px 8px hsl(var(--primary) / 0.3);
+  }
+
+  .car-trunk {
+    @apply absolute;
+    width: 40px;
+    height: 28px;
+    background: linear-gradient(135deg, hsl(0 90% 35%), hsl(0 95% 25%));
+    border-radius: 8px 12px 12px 8px;
+    top: 16px;
+    left: 20px;
+  }
+
+  /* Car Wheels */
+  .car-wheels {
+    @apply relative;
+  }
+
+  .car-wheel {
+    @apply absolute;
+    width: 20px;
+    height: 20px;
+    background: hsl(var(--foreground));
+    border-radius: 50%;
+    border: 3px solid hsl(var(--border));
+    top: 35px;
+    animation: wheel-spin 0.5s linear infinite;
+  }
+
+  .car-wheel-front {
+    left: 25px;
+  }
+
+  .car-wheel-rear {
+    left: 115px;
+  }
+
+  .car-wheel-rim {
+    @apply absolute;
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Car Details */
+  .car-headlights {
+    @apply absolute;
+    width: 8px;
+    height: 8px;
+    background: hsl(60 100% 90%);
+    border-radius: 50%;
+    top: 25px;
+    left: 140px;
+    box-shadow: 0 0 10px hsl(60 100% 90%);
+    animation: headlight-flicker 2s ease-in-out infinite;
+  }
+
+  .car-taillights {
+    @apply absolute;
+    width: 6px;
+    height: 12px;
+    background: hsl(0 100% 60%);
+    border-radius: 3px;
+    top: 22px;
+    left: 15px;
+    animation: taillight-blink 1.5s ease-in-out infinite;
+  }
+
+  .car-grille {
+    @apply absolute;
+    width: 8px;
+    height: 15px;
+    background: linear-gradient(180deg, hsl(var(--foreground)), hsl(var(--muted-foreground)));
+    border-radius: 2px;
+    top: 22px;
+    left: 142px;
+  }
+
+  /* Speed Lines */
+  .car-speed-lines {
+    @apply absolute;
+    top: 0;
+    left: -50px;
+    width: 100px;
+    height: 100%;
+  }
+
+  .car-speed-line {
+    @apply absolute;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), transparent);
+    border-radius: 1px;
+    animation: speed-line 1s ease-out infinite;
+  }
+
+  .car-line-1 {
+    top: 20px;
+    width: 30px;
+    animation-delay: 0s;
+  }
+
+  .car-line-2 {
+    top: 30px;
+    width: 25px;
+    animation-delay: 0.2s;
+  }
+
+  .car-line-3 {
+    top: 40px;
+    width: 35px;
+    animation-delay: 0.4s;
+  }
+
+  .car-line-4 {
+    top: 50px;
+    width: 20px;
+    animation-delay: 0.6s;
+  }
+
+  /* Animations */
+  @keyframes car-drive {
+    0%, 100% { 
+      transform: translateX(0) scale(1); 
+    }
+    25% { 
+      transform: translateX(20px) scale(1.05); 
+    }
+    50% { 
+      transform: translateX(0) scale(1); 
+    }
+    75% { 
+      transform: translateX(-20px) scale(0.95); 
+    }
+  }
+
+  @keyframes wheel-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes headlight-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  @keyframes taillight-blink {
+    0%, 80%, 100% { opacity: 1; }
+    85%, 95% { opacity: 0.3; }
+  }
+
+  @keyframes speed-line {
+    0% { 
+      transform: translateX(-50px); 
+      opacity: 0; 
+    }
+    50% { 
+      opacity: 1; 
+    }
+    100% { 
+      transform: translateX(100px); 
+      opacity: 0; 
+    }
+  }
+}
+    30% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-150px);
+      opacity: 0;
+    }
+  }
+}
